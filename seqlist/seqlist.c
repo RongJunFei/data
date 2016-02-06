@@ -11,7 +11,7 @@ typedef struct _tag_SeqList
 	TSeqListNode *node;
 }TSeqList;
 
-SeqList *SeqList_Create(int capacity)
+SeqList *SeqList_Create(int capacity) //O(1)
 {
 	TSeqList *ret = NULL;
 
@@ -30,12 +30,12 @@ SeqList *SeqList_Create(int capacity)
 	return ret;
 }
 
-void SeqList_Destroy(SeqList *list)
+void SeqList_Destroy(SeqList *list) //O(1)
 {
 	free(list);
 }
 
-void SeqList_Clear(SeqList *list)
+void SeqList_Clear(SeqList *list) //O(1)
 {
 	TSeqList *sList = (TSeqList *)list;
 
@@ -45,7 +45,7 @@ void SeqList_Clear(SeqList *list)
 	}
 }
 
-int SeqList_Length(SeqList *list)
+int SeqList_Length(SeqList *list) //O(1)
 {
 	TSeqList *sList = (TSeqList *)list;
 	int ret = -1;
@@ -58,7 +58,7 @@ int SeqList_Length(SeqList *list)
 	return ret;
 }
 
-int SeqList_Capacity(SeqList *list)
+int SeqList_Capacity(SeqList *list)  //O(1)
 {
 	TSeqList *sList = (TSeqList *)list;
 	int ret = -1;
@@ -71,7 +71,7 @@ int SeqList_Capacity(SeqList *list)
 	return ret;
 }
 
-int SeqList_Insert(SeqList *list,SeqListNode* node, int pos)
+int SeqList_Insert(SeqList *list,SeqListNode* node, int pos)  //O(n)
 {
 	TSeqList *sList = (TSeqList *)list;
 	int ret = (sList != NULL);
@@ -99,7 +99,7 @@ int SeqList_Insert(SeqList *list,SeqListNode* node, int pos)
 	return ret;
 }
 
-SeqListNode *SeqList_Get(SeqList *list, int pos)
+SeqListNode *SeqList_Get(SeqList *list, int pos)  //O(1)
 {
 	TSeqList *sList = (TSeqList *)list;
 	SeqListNode * ret = NULL;
@@ -112,7 +112,7 @@ SeqListNode *SeqList_Get(SeqList *list, int pos)
 	return ret;
 }
 
-SeqListNode *SeqList_Delete(SeqList *list, int pos)
+SeqListNode *SeqList_Delete(SeqList *list, int pos) //O(n)
 {
 	TSeqList *sList = (TSeqList *)list;
 	SeqListNode *ret = SeqList_Get(list,pos);
