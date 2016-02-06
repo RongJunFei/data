@@ -26,5 +26,16 @@ int main(int argc, const char *argv[])
 		printf("%d \n", *p);
 	}
 
+	printf("\n");
+
+	while(SeqList_Length(list) > 0)
+	{
+		int *p = (int *)SeqList_Delete(list, 0);
+
+		printf("%d \n", *p);
+	}
+
+	SeqList_Destroy(list);
+
 	return 0;
 }
