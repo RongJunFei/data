@@ -8,7 +8,7 @@ typedef struct _tag_LinkList
 	int length;
 }TLinkList;
 
-LinkList *LinkList_Create()
+LinkList *LinkList_Create()   //O(1)
 {
 	TLinkList * ret = (TLinkList *)malloc(sizeof(TLinkList));
 	if(ret != NULL)
@@ -20,12 +20,12 @@ LinkList *LinkList_Create()
 	return ret;
 }
 
-void LinkList_Destroy(LinkList *list)
+void LinkList_Destroy(LinkList *list)   //O(1)
 {
 	free(list);
 }
 
-void LinkList_Clear(LinkList *list)
+void LinkList_Clear(LinkList *list)    //O(1)
 {
 	TLinkList *slist = (TLinkList *)list;
 	
@@ -36,7 +36,7 @@ void LinkList_Clear(LinkList *list)
 	}
 }
 
-int LinkList_Length(LinkList *list)
+int LinkList_Length(LinkList *list)   //O(1)
 {
 	TLinkList * slist = (TLinkList *)list;
 	int ret = -1;
@@ -49,7 +49,7 @@ int LinkList_Length(LinkList *list)
 	return ret;
 }
 
-int LinkList_Insert(LinkList *list, LinkListNode *node, int pos)
+int LinkList_Insert(LinkList *list, LinkListNode *node, int pos)   //O(n)
 {
 	TLinkList *slist = (TLinkList *)list;
 	int ret = (slist != NULL) && (pos >= 0) && (node != NULL);
@@ -73,7 +73,7 @@ int LinkList_Insert(LinkList *list, LinkListNode *node, int pos)
 	return ret;
 }
 
-LinkListNode *LinkList_Get(LinkList *list, int pos)
+LinkListNode *LinkList_Get(LinkList *list, int pos)    //O(n)
 {
 	TLinkList *slist = (TLinkList *)list;
 	LinkListNode * ret = NULL;
@@ -94,7 +94,7 @@ LinkListNode *LinkList_Get(LinkList *list, int pos)
 	return ret;
 }
 
-LinkListNode *LinkList_Delete(LinkList *list, int pos)
+LinkListNode *LinkList_Delete(LinkList *list, int pos)   //O(n)
 {
 	TLinkList *slist = (TLinkList *)list;
 	LinkListNode * ret = NULL;
