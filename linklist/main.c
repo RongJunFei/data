@@ -25,11 +25,11 @@ int main(int argc, const char *argv[])
 	v4.v = 4;
 	v5.v = 5;
 
-	LinkList_Insert(list, (LinkListNode *)&v1, 0);
-	LinkList_Insert(list, (LinkListNode *)&v2, 0);
-	LinkList_Insert(list, (LinkListNode *)&v3, 0);
-	LinkList_Insert(list, (LinkListNode *)&v4, 0);
-	LinkList_Insert(list, (LinkListNode *)&v5, 0);
+	LinkList_Insert(list, (LinkListNode *)&v1, LinkList_Length(list));
+	LinkList_Insert(list, (LinkListNode *)&v2, LinkList_Length(list));
+	LinkList_Insert(list, (LinkListNode *)&v3, LinkList_Length(list));
+	LinkList_Insert(list, (LinkListNode *)&v4, LinkList_Length(list));
+	LinkList_Insert(list, (LinkListNode *)&v5, LinkList_Length(list));
 
 	for(i = 0; i < LinkList_Length(list); i++)
 	{
