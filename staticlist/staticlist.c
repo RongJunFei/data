@@ -17,7 +17,7 @@ typedef struct _tag_StaticList
 	TStaticListNode node[];
 }TStaticList;
 
-StaticList *StaticList_Create(int capacity)
+StaticList *StaticList_Create(int capacity)    //O(n)
 {
 	TStaticList *ret = NULL;
 	int i = 0;
@@ -42,12 +42,12 @@ StaticList *StaticList_Create(int capacity)
 	return ret;
 }
 
-void StaticList_Destroy(StaticList *list)
+void StaticList_Destroy(StaticList *list)    //O(1)
 {
 	free(list);
 }
 
-void StaticList_Clear(StaticList *list)
+void StaticList_Clear(StaticList *list)    //O(n)
 {
 	TStaticList *sList = (TStaticList *)list;
 	int i = 0;
@@ -64,7 +64,7 @@ void StaticList_Clear(StaticList *list)
 	}
 }
 
-int StaticList_Length(StaticList *list)
+int StaticList_Length(StaticList *list)    //O(1)
 {
 	TStaticList *sList = (TStaticList *)list;
 	int ret = -1;
@@ -77,7 +77,7 @@ int StaticList_Length(StaticList *list)
 	return ret;
 }
 
-int StaticList_Capacity(StaticList *list)
+int StaticList_Capacity(StaticList *list)    //O(1)
 {
 	TStaticList *sList = (TStaticList *)list;
 	int ret = -1;
@@ -90,7 +90,7 @@ int StaticList_Capacity(StaticList *list)
 	return ret;
 }
 
-int StaticList_Insert(StaticList *list, StaticListNode *node, int pos)
+int StaticList_Insert(StaticList *list, StaticListNode *node, int pos)    //O(n)
 {
 	TStaticList *sList = (TStaticList *)list;
 	int ret = (sList != NULL);
@@ -130,7 +130,7 @@ int StaticList_Insert(StaticList *list, StaticListNode *node, int pos)
 	return ret;
 }
 
-StaticListNode *StaticList_Get(StaticList *list, int pos)
+StaticListNode *StaticList_Get(StaticList *list, int pos)    //O(n)
 {
 	TStaticList *sList = (TStaticList *)list;
 	StaticListNode *ret = NULL;
@@ -155,7 +155,7 @@ StaticListNode *StaticList_Get(StaticList *list, int pos)
 	return ret;
 }
 
-StaticListNode *StaticList_Delete(StaticList *list, int pos)
+StaticListNode *StaticList_Delete(StaticList *list, int pos)    //O(n)
 {
 	TStaticList *sList = (TStaticList *)list;
 	StaticListNode *ret = NULL;
