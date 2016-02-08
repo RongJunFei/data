@@ -37,5 +37,13 @@ int main(int argc, const char *argv[])
 		printf("%d \n", pv->v);
 	}
 
+	while(LinkList_Length(list) > 0)
+	{
+		struct Value *pv = (struct Value *)LinkList_Delete(list, 0);
+		printf("%d \n", pv->v);
+	}
+
+	LinkList_Destroy(list);
+
 	return 0;
 }
