@@ -38,8 +38,9 @@ int main(int argc, const char *argv[])
 	CircleList_Insert(list,(CircleListNode *)&v4,CircleList_Length(list));
 
 	CircleList_Insert(list, (CircleListNode *)&v5, 5);
+	CircleList_Delete(list,0);
 
-	for(i = 0; i < CircleList_Length(list); i++)
+	for(i = 0; i < 2 *CircleList_Length(list); i++)
 	{
 		struct Value *pv = (struct Value *)CircleList_Get(list,i);
 		printf("%d \n", pv->v);
