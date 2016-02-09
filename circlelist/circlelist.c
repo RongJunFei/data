@@ -67,6 +67,11 @@ int CircleList_Insert(CircleList *list, CircleListNode *node, int pos)   //O(n)
 		node->next = current->next;
 		current->next = node;
 
+		if(slist->length == 0)
+		{
+			node->next = node;
+		}
+
 		slist->length++;
 	}
 
@@ -79,7 +84,7 @@ CircleListNode *CircleList_Get(CircleList *list, int pos)    //O(n)
 	CircleListNode * ret = NULL;
 	int i = 0;
 
-	if((slist != NULL) && (0 <= pos) && (pos < slist->length))
+	if((slist != NULL) && (pos >= 0))
 	{
 		CircleListNode * current = (CircleListNode *)slist;
 
@@ -100,9 +105,11 @@ CircleListNode *CircleList_Delete(CircleList *list, int pos)   //O(n)
 	CircleListNode * ret = NULL;
 	int i = 0;
 
-	if((slist != NULL) && (0 <= pos) && (pos < slist->length))
+	if((slist != NULL) && (pos >= 0))
 	{
 		CircleListNode * current = (CircleListNode *)slist;
+		CircleListNode * first = slist->header.next;
+		CircleListNode * last = (CircleListNode *)CircleList_Get(slist,slist->length - 1);
 
 		for(i = 0; i < pos; i++)
 		{
@@ -113,6 +120,17 @@ CircleListNode *CircleList_Delete(CircleList *list, int pos)   //O(n)
 		current->next = ret->next;
 
 		slist->length--;
+
+		if(first == ret)
+		{
+			slist->header.next = ret->next;
+			last->next = ret->next;
+		}
+
+		if(slist->length == 0)
+		{
+			slist->header.next = NULL;
+		}
 	}
 
 	return ret;
