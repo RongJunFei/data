@@ -16,4 +16,9 @@ int CircleList_Insert(CircleList *list, CircleListNode *node, int pos);
 CircleListNode *CircleList_Get(CircleList *list, int pos);
 CircleListNode *CircleList_Delete(CircleList *list, int pos);
 
+CircleListNode *CircleList_DeleteNode(CircleList *list, CircleListNode *node);
+CircleListNode *CircleList_Reset(CircleList *list);
+CircleListNode *CircleList_Current(CircleList *list);
+CircleListNode *CircleList_Next(CircleList *list);
+
 #endif

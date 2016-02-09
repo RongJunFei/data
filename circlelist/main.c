@@ -55,6 +55,25 @@ int main(int argc, const char *argv[])
 		printf("%d \n", pv->v);
 	}
 
+	printf("\n");
+
+	CircleList_Insert(list,(CircleListNode *)&v1,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v2,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v3,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v4,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v5,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v6,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v7,CircleList_Length(list));
+	CircleList_Insert(list,(CircleListNode *)&v8,CircleList_Length(list));
+
+
+	for(i = 0; i < CircleList_Length(list); i++)
+	{
+		struct Value *pv = (struct Value *)CircleList_Next(list);
+
+
+		printf("%d \n", pv->v);
+	}
 	CircleList_Destroy(list);
 	
 	return 0;
