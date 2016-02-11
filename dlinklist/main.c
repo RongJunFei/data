@@ -46,10 +46,28 @@ int main(int argc, const char *argv[])
 
 	for(i = 0; i < DLinkList_Length(list); i++)
 	{
-		pv = (struct Value *)DLinkList_Get(list, i);
+		pv = (struct Value *)DLinkList_Next(list);
 
 		printf("%d \n", pv->v);
 	}
+
+	printf("\n");
+
+	DLinkList_Reset(list);
+
+	DLinkList_Next(list);
+	pv = (struct Value *)DLinkList_Current(list);
+	printf("%d \n", pv->v);
+
+	DLinkList_DeleteNode(list, (DLinkListNode *)pv);
+	pv = (struct Value *)DLinkList_Current(list);
+	printf("%d \n", pv->v);
+
+	DLinkList_Pre(list);
+	pv = (struct Value *)DLinkList_Current(list);
+	printf("%d \n", pv->v);
+
+	printf("Length: %d \n", DLinkList_Length(list));
 
 	DLinkList_Destroy(list);
 	
