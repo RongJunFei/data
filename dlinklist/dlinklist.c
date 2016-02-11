@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
-#include "linklist.h"
+#include "dlinklist.h"
 
 typedef struct _tag_DLinkList
 {
@@ -15,6 +15,7 @@ DLinkList *DLinkList_Create()   //O(1)
 	{
 		ret->length = 0;
 		ret->header.next = NULL;
+		ret->header.pre = NULL;
 	}
 
 	return ret;
@@ -33,6 +34,7 @@ void DLinkList_Clear(DLinkList *list)    //O(1)
 	{
 		slist->length = 0;
 		slist->header.next = NULL;
+		slist->header.pre = NULL;
 	}
 }
 
@@ -58,14 +60,29 @@ int DLinkList_Insert(DLinkList *list, DLinkListNode *node, int pos)   //O(n)
 	if(ret)
 	{
 		DLinkListNode *current = (DLinkListNode *)slist;
+		DLinkListNode *next = NULL;
 
 		for(i = 0; (i < pos) && (current->next != NULL); i++)
 		{
 			current = current->next;
 		}
 
-		node->next = current->next;
+		next = current->next;
+
 		current->next = node;
+		node->next = next;
+
+		if(next != NULL)
+		{
+			next->pre = node;
+		}
+
+		node->pre = current;
+
+		if(slist->length == 0)
+		{
+			node->pre = NULL;
+		}
 
 		slist->length++;
 	}
@@ -103,6 +120,7 @@ DLinkListNode *DLinkList_Delete(DLinkList *list, int pos)   //O(n)
 	if((slist != NULL) && (0 <= pos) && (pos < slist->length))
 	{
 		DLinkListNode * current = (DLinkListNode *)slist;
+		DLinkListNode * next = NULL;
 
 		for(i = 0; i < pos; i++)
 		{
@@ -110,7 +128,19 @@ DLinkListNode *DLinkList_Delete(DLinkList *list, int pos)   //O(n)
 		}
 
 		ret = current->next;
-		current->next = ret->next;
+		next = ret->next;
+
+		current->next = next;
+
+		if(next != NULL)
+		{
+			next->pre = current;
+
+			if(current == (DLinkListNode *)slist)
+			{
+				next->pre = NULL;
+			}
+		}
 
 		slist->length--;
 	}

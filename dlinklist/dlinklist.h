@@ -6,6 +6,7 @@ typedef struct _tag_DLinkListNode DLinkListNode;
 struct _tag_DLinkListNode
 {
 	DLinkListNode *next;
+	DLinkListNode *pre;
 };
 
 DLinkList *DLinkList_Create();
