@@ -74,6 +74,27 @@ int main(int argc, const char *argv[])
 
 		printf("%d \n", pv->v);
 	}
+
+	printf("\n");
+
+	CircleList_Reset(list);
+
+	while(CircleList_Length(list) > 0)
+	{
+		struct Value *pv = NULL;
+
+		for(i = 1; i < 3; i++)
+		{
+			CircleList_Next(list);
+		}
+
+		pv = (struct Value *)CircleList_Current(list);
+
+		printf("%d \n", pv->v);
+
+		CircleList_DeleteNode(list,(CircleListNode *)pv);
+	}
+
 	CircleList_Destroy(list);
 	
 	return 0;
